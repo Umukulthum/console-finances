@@ -86,3 +86,76 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+//This function accepts a 2-dimensional array and returns an object with three proerties
+const result = getAmountDifference(finances);
+
+//Total number of months included in the dataset
+let totalMonths = finances.length;
+
+//Net total amount of profits/losses over the entire period
+let total = result.totalAmount != 0 ? result.totalAmount : 0;
+
+//Average of the changes in profits/losses over the entire period
+let averageChange = result.totalDifference != 0 ? result.totalDifference / (totalMonths - 1) : 0;
+
+//Extract the amount part of the tracked difference into a new array
+const newArray = result.trackedDiffArray.map(function(item) { return item[1]; });
+
+//Get the maximum amount, position of the maximum amount and the array from the list that contains the maximum value
+let maximum = Math.max.apply(null, newArray);
+let indexOfMax = newArray.indexOf(maximum);
+const arrayofMax = result.trackedDiffArray[indexOfMax];
+ 
+//Get the minimum amount, position of the minimum amount and the array from the list that contains the minimum value
+let minimum = Math.min.apply(null, newArray);
+let indexOfMin = newArray.indexOf(minimum);
+const arrayOfMin = result.trackedDiffArray[indexOfMin];
+
+
+//*************** Print the result to the Console ***************
+console.log("Financial Analysis");
+console.log("-----------------------");
+console.log(`Total Months: ${totalMonths}`);
+console.log(`Total: ${total}`);
+console.log(`Average Change: ${averageChange.toFixed(2)}`);
+
+console.log(`Greatest Increase in Profit/Losses: ${arrayofMax[0]} ($${arrayofMax[1]})`); 
+console.log(`Greatest Decrease in Profit/Losses: ${arrayOfMin[0]} ($${arrayOfMin[1]})`); 
+
+
+
+
+
+// This function accepts a 2-dimensional array and returns an object with three properties.
+// The first property consists of an array with the tracked difference of the profits/losses,
+// the second property is the net total amount generated over the period (both profits and loss) and
+// the third property is the total change in profit/loss from month to month.
+function getAmountDifference(arr) {
+
+  //Declared and initialized the needed variable names
+  let totalAmt = 0, totalDiff = 0, difference = 0;
+  const diffArr = [];
+
+
+  for (let i = 0; i < arr.length; i++) {
+
+    //Accumulated the total amount in this variable
+    totalAmt += arr[i][1];
+
+    if (i <= 0) {
+      totalDiff += difference;
+    }
+
+    else {
+      difference = arr[i][1] - arr[i - 1][1];
+      totalDiff += difference;
+
+      minimumArr = 
+      diffArr.push([arr[i][0], difference]);
+    }
+  }
+
+  return { trackedDiffArray: diffArr, totalAmount: totalAmt, totalDifference: totalDiff };
+}
+
