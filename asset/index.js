@@ -124,6 +124,13 @@ console.log(`Greatest Increase in Profit/Losses: ${arrayofMax[0]} ($${arrayofMax
 console.log(`Greatest Decrease in Profit/Losses: ${arrayOfMin[0]} ($${arrayOfMin[1]})`); 
 
 
+//*************** Display the result on the Webpage ***************
+document.getElementById("totalMonths").innerHTML = totalMonths;
+document.getElementById("total").innerHTML = total;
+document.getElementById("avgChange").innerHTML = averageChange.toFixed(2);
+document.getElementById("max").innerHTML = `${arrayofMax[0]} ($${arrayofMax[1]})`;
+document.getElementById("min").innerHTML = `${arrayOfMin[0]} ($${arrayOfMin[1]})`;
+
 
 
 
