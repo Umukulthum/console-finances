@@ -24,5 +24,15 @@ The built in Min and Max functions in the Math Object was used to get the greate
 decrease in the profits/losses from the given data
 
 
-## Link to Project
-https://umukulthum.github.io/console-finances/index.html
+## Screenshot
+![image][def]
+
+## Live
+https://umukulthum.github.io/console-finances
+
+
+## Repository
+https://github.com/Umukulthum/console-finances
+
+
+[def]: /Docs/FinAnalysisScreenshot.png
